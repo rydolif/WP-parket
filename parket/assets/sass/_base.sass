@@ -1,0 +1,178 @@
+@import "fonts"
+
+
+//----------------------fonts---------------------
+$fonts: 'Futura', sans-serif
+//---------------------end-fonts---------------------
+
+//----------------------color---------------------
+$accent: #6e8a48
+$text: #303030
+$white: #fff
+$gray: #f1f3f2
+$red: #c00000
+//---------------------end-color---------------------
+
+::selection
+	background-color: $accent
+	color: $white
+
+body
+	overflow-x: hidden
+	position: relative
+	min-width: 320px
+	font-family: $fonts
+	font-size: 18px
+	color: $text
+	line-height: 1.6
+	font-weight: 400
+
+a, div, ul, li, input, textarea
+	&:hover,
+	&:focus
+		outline: none
+
+section
+	overflow: hidden
+	
+h1, h2, h3, h4, h5, h6
+	font-weight: 600
+	line-height: 1.1
+	margin: 0
+	padding: 0
+	text-transform: uppercase
+
+	span
+		font-weight: 400 !important
+
+h1
+	font-size: 60px
+	margin-bottom: 35px
+	line-height: 1.1
+
+h2
+	margin-bottom: 35px
+	font-size: 32px
+	letter-spacing: 2px
+	
+h3
+	font-size: 24px
+	margin-bottom: 45px
+
+ul
+	margin: 0
+	padding: 0
+	list-style-type: none
+
+i
+	font-style: normal
+	font-size: 16px
+	color: $white
+
+input, textarea
+	height: 50px
+	line-height: 50px
+	border: 1px solid $white
+	outline: none
+	box-shadow: none
+	-webkit-appearance: none
+	background-color: transparent
+	padding: 0 30px
+	color: #c0c0c0
+	width: 100%
+	font-size: 18px
+	background-color: $white
+	
+	&:focus:required:invalid
+		border-color: $red
+		outline: none
+		box-shadow: none
+		-webkit-appearance: none
+
+	&:required:valid
+		border-color: $accent
+		outline: none
+		box-shadow: none
+		-webkit-appearance: none
+
+	&::placeholder
+		color: #c0c0c0
+		font-size: 18px
+		line-height: 50px
+
+textarea
+	border: 1px solid #c3c3c3
+	height: 120px
+	resize: none
+	line-height: 1.4
+	padding: 15px
+
+	&::placeholder
+		line-height: 1.4
+
+select
+	height: 40px
+	border-radius: 5px
+	border: 1px solid $white
+	width: 100%
+	padding: 0 15px
+	-webkit-appearance: none
+	-moz-appearance: none
+	appearance: none
+
+	&:hover,
+	&:focus
+		outline: none
+		border-color: $gray
+
+option
+	padding: 0 15px
+	height: 20px
+
+
+b, strong
+	font-weight: 600
+
+p
+	margin: 0
+	padding: 0
+
+sub, sup
+	font-size: 65%
+
+a
+	color: $text
+	transition: all .6s
+
+	&:focus,
+	&:hover
+		outline: none
+		text-decoration: none
+		color: $accent
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button 
+	-webkit-appearance: none
+	margin: 0
+
+
+input[type="number"]
+	-moz-appearance: textfield
+
+input[type="number"]:hover,
+input[type="number"]:focus
+	-moz-appearance: number-input
+
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button
+	-webkit-appearance: none
+	margin: 0
+
+
+// @import "_base/preloader"
+// @import "_base/animation"
+@import "_base/btn"
+@import "_base/form"
+// @import "_base/modal"
+@import "_base/hamburger"
