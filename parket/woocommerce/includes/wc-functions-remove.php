@@ -4,11 +4,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-// add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
-// remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
+add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
 
 
-// remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10);
+remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10);
 
 
 

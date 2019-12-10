@@ -24,7 +24,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php do_action( 'woocommerce_before_cart_totals' ); ?>
 
-
 	<table cellspacing="0" class="shop_table shop_table_responsive">
 
 		<?php foreach ( WC()->cart->get_coupons() as $code => $coupon ) : ?>
