@@ -9,7 +9,6 @@ $(function() {
       }
   });
 
-
 //------------------------------гамбургер-----------------------------
   var swiper = new Swiper('.swiper-container', {
     navigation: {
@@ -24,6 +23,11 @@ $(function() {
     $(this).toggleClass('hamburger--active');
     $('.nav').toggleClass('nav--active');
     $('body').toggleClass('no-scroll');
+  });
+
+//------------------------------гамбургер-----------------------------
+  $('.header__search img').click(function() {
+    $(this).toggleClass('header__search--active');
   });
 
 //---------------------------js-----------------------
@@ -43,4 +47,13 @@ $(function() {
   $('input[type="tel"]').mask('+0 (000) 000-00-00');
 
   
+//-------------------------------попандер---------------------------------------
+  $('.modal').popup({
+    escape: false,
+    blur: false,
+    scrolllock: true,
+    transition: 'all 0.3s'
+  });
+
+
 });

@@ -22,14 +22,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 do_action( 'woocommerce_before_account_navigation' );
 ?>
 
-<nav class="cabinet__nav woocommerce-MyAccount-navigation">
-	<?php 
-		wp_nav_menu( array(
-			'menu'=>'profile',
-			'menu_class'=>'login',
-		    'theme_location'=>'menu',
-		) );
-	?>
-</nav>
+<div class="cabinet__container woocommerce-MyAccount-content">
+
+	<nav class="cabinet__nav woocommerce-MyAccount-navigation">
+		<?php 
+			wp_nav_menu( array(
+				'menu'=>'profile',
+				'menu_class'=>'',
+			    'theme_location'=>'menu',
+			) );
+		?>
+	</nav>
 
 <?php do_action( 'woocommerce_after_account_navigation' ); ?>

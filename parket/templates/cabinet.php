@@ -6,8 +6,6 @@
 get_header();
 ?>
 	
-
-
 	<section class="cabinet">
 		<div class="container">
 

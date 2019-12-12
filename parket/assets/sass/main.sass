@@ -98,6 +98,13 @@
 				z-index: 1
 				top: 105%
 
+		&--active
+			.header__search_form
+				display: block
+				opacity: 1
+				z-index: 1
+				top: 105%
+
 		&_form
 			display: none
 			position: absolute
@@ -111,6 +118,10 @@
 			transition: all .6s
 			text-align: right
 
+			input
+				line-height: 50px !important
+				font-size: 18px
+
 
 	&__profile
 		position: relative
@@ -122,6 +133,12 @@
 				opacity: 1
 				z-index: 1
 				top: 105%
+
+			img
+				transform: scale(.8)
+
+		img
+			transition: all .6s
 		ul
 			display: none
 			position: absolute
@@ -144,7 +161,6 @@
 
 	&__cart
 		position: relative
-
 		span
 
 			span
@@ -249,11 +265,13 @@
 .grums
 	padding: 40px 0 50px
 	color: #bababa
+	width: 100%
 
 	a
 		color: #bababa
 
-	span
+
+	.breadcrumbs__separator
 		margin: 0 10px
 
 	ul
@@ -270,7 +288,7 @@
 		flex-wrap: wrap
 
 	&__filter
-		width: 24%
+		width: 23%
 
 	&__wrap
 		width: 75%
@@ -297,6 +315,7 @@
 	h4
 		margin-bottom: 50px
 		font-weight: 500
+		text-align: left
 
 	input
 		padding: 0 15px
@@ -305,24 +324,23 @@
 	&__container
 		background-color: $white
 		padding: 45px 85px
+		box-shadow: 0 4px 7px 0 rgba($text, .2)
 
 	&__nav
-		margin-bottom: 75px
 		border-bottom: 1px solid #e1e1e1
+		margin-bottom: 75px
 
 		ul
 			display: flex
 			justify-content: space-between
 			flex-wrap: wrap
 			width: 100%
+			background-color: #fff
 
 		a
 			position: relative
 			display: block
-			padding: 
-				right: 90px
-				left: 90px
-				bottom: 20px
+			padding: 20px 90px
 
 			&::before
 				content: ''
@@ -873,13 +891,10 @@
 	text-align: center
 
 
-.woocommerce ul.products li.product a.tinvwl-button.tinvwl_add_to_wishlist_button.tinvwl-icon-heart.tinvwl-product-in-list:before,
-.woocommerce-page ul.products li.product a.tinvwl-button.tinvwl-icon-heart.tinvwl_add_to_wishlist_button.tinvwl-product-in-list:before,
-a.wishlist_products_counter.top_wishlist-heart.wishlist-counter-with-products:before,
-span.wishlist_products_counter.top_wishlist-heart.wishlist-counter-with-products:before
-	content: url(../img/svg/heart.svg)
-	width: 20px
-	height: 20px
+.wishlist_products_counter::before
+	content: url(../img/svg/heart.svg) !important
+	width: 20px !important
+	height: 20px !important
 
 .wishlist_products_counter
 	position: relative
@@ -969,6 +984,8 @@ div.wpcf7-mail-sent-ok
 	h2
 		font-size: 24px
 
+
+
 .woocommerce
 	&__table
 		width: 100%
@@ -992,12 +1009,427 @@ div.wpcf7-mail-sent-ok
 			width: 140px
 			height: 140px
 
+		&--checkout
+			img
+				margin-right: 30px
+				width: 85px
+				height: 85px
+
 	&__product-name
 		font-size: 24px
 		font-weight: 500
 		text-transform: uppercase
 
+	&__product-subtotal
+		font-size: 24px
+		font-weight: 600
 
+		.woocommerce-Price-currencySymbol
+			font-size: 18px
+
+	&__product-remove
+		position: relative
+
+		a
+			display: block
+			position: absolute
+			top: 25px
+			right: 25px
+			border: 1px solid #6e8a48
+			border-radius: 50%
+			width: 26px
+			height: 26px
+			transition: all .6s
+			color: transparent
+
+			&::before,
+			&::after
+				content: ''
+				position: absolute
+				top: 50%
+				left: 50%
+				transform: translate(-50%, -50%) rotate(-45deg)
+				display: block
+				background-color: #6e8a48
+				transition: all .6s
+
+			&::before
+				width: 1px
+				height: 13px
+
+			&::after
+				height: 1px
+				width: 13px
+
+			&:hover,
+			&:focus
+				border-color: $red
+
+				&::before,
+				&::after
+					background-color: $red
 	
+	&__product-quantity
+
+		div
+			display: flex
+			justify-content: center
+
+		input
+			width: 80px
+			height: 40px
+			line-height: 40px
+			background-color: #fff !important
+			border: 1px solid $gray !important
+			padding: 0
+			text-align: center
+			margin: 0 4px
+			color: $text
+
+			&::placeholder
+				line-height: 40px
+				color: $text
+
+		a
+			display: flex
+			align-items: center
+			justify-content: center
+			background-color: $gray
+			width: 40px
+			height: 40px
+			line-height: 40px
+			border-radius: 0
+			padding: 0
+			font-size: 36px
+			font-weight: 700
+
+	&__cart_totals
+		width: 40%
+		display: flex
+		flex-wrap: wrap
+		margin-right: 0
+		margin-left: auto
+		padding-top: 75px
+
+		.wc-proceed-to-checkout
+			width: 100%
+
+	&__total
+		width: 100%
+
+	&__order-total
+		display: flex
+		justify-content: space-between
+		align-items: center
+		margin-bottom: 50px
+
+		strong
+			font-size: 32px
+			font-weight: 700
+
+	&__checkout
+		display: flex
+		justify-content: space-between
+
+		&_col
+			width: 45%
+
+			&:nth-child(2)
+				width: 50%
+
+		input
+			padding: 0 15px
+			border-bottom: 1px solid #e1e1e1
+			color: $text
+
+		.form-row
+			margin-bottom: 15px
+
+		.screen-reader-text
+			display: none
+
+		.woocommerce-input-wrapper
+
+			label
+				position: relative
+				padding-left: 50px
+				color: #9c9c9c
+				cursor: pointer
+				margin-bottom: 0
+				margin-right: 0
+				transition: all .6s
+				padding: 0 0 0 30px
+				border: none
+				margin-left: 90px
+				line-height: 1
+				margin-bottom: 20px
+
+				&:last-child
+					margin-bottom: 0
+				
+
+				&::before,
+				&::after
+					content: ''
+					position: absolute
+					left: 0
+					transition: all .6s
+
+				&::before
+					width: 15px
+					height: 15px
+					border: 1px solid $accent
+
+				&::after
+					width: 9px
+					height: 9px
+					border: 1px solid $accent
+					background: $accent
+					left: 3px
+					top: 3px
+
+			input[type="radio"]
+				display: none
+
+			input[type="radio"]:checked + label
+				color: $text
+				&::after
+					transform: scale(1)
+
+			input[type="radio"] + label::after
+				transform: scale(0)
+
+	&__final
+		margin-bottom: 50px
+
+		img
+			margin-right: 10px
+	
+	&__shop_table
+		background-color: #fff
+		box-shadow: 0 0 5px 0 rgba($text, .3)
+		max-height: 300px
+		overflow: auto
+		margin-bottom: 35px
+
+	&__cart-item
+		position: relative
+		display: flex
+		justify-content: space-between
+		padding: 25px 50px 25px  30px
+
+		&:last-child
+			&::before
+				display: none
+
+		&::before
+			content: ''
+			position: absolute
+			bottom: 0
+			right: 25px
+			left: 25px
+			height: 1px 
+			background-color: #e1e1e1
+
+		&_line
+			display: flex
+			justify-content: space-between
+			align-items: center
+			position: relative
+
+			.amount
+				font-size: 24px
+				font-weight: 600
+
+				span
+					font-size: 18px
+
+			.product_name
+				display: block
+				width: 100%
+				font-size: 24px
+				font-weight: 600
+				text-transform: uppercase
+			
+			.product_price
+				display: none
+
+			input
+				background-color: #fff !important
+				border: none !important
+				text-align: center
+				padding: 0
+				width: 40px !important
+				height: auto
+				
+
+			a
+				top: -10px
+				right: -35px
+
+		&_wrap
+			width: 100%
+
+	&__form
+		position: relative
+		max-width: 620px
+		width: 100%
+		height: auto
+		margin: 0 auto
+		padding: 85px
+		background-color: #fff
+		z-index: 1
+		box-shadow: 0 0 10px 0 rgba($text, .3)
+
+		h3
+			text-align: center
+			font-size: 18px
+			text-transform: uppercase
+			margin-bottom: 50px
+	
+	&-MyAccount
+
+		&-content
+			text-align: center
+
+		&-orders
+			width: 100%
+
+			thead
+				background-color: $gray
+
+			th
+				padding: 15px 0
+				color: #969696
+				line-height: 1
+				font-weight: 400
+
+			td
+				padding: 30px 0
+
+	&-table
+		&--order
+			&-details
+				margin: 0 auto
+				text-align: left
+				max-width: 500px
+				width: 100%
+
+
+				td, th
+					padding: 2px 5px
+
+		&--custom
+			&-fields
+				margin: 0 auto 40px
+				text-align: left
+				max-width: 500px
+				width: 100%
+
+				td, th
+					padding: 2px 5px
+					text-align: left
+
+	&-order-details,
+	&-customer-details
+
+		h2
+			font-size: 24px
+			margin-bottom: 20px	
+	
+	&__address-fields
+		max-width: 480px
+		margin: 0 auto
+
+		label
+			display: none
+
+.shop__list
+	display: flex
+	flex-wrap: wrap
+	padding-top: 150px
+	margin: 0 -15px
+
+.aws-container 
+	.aws-search-form .aws-search-clear
+		width: auto
+		padding: 0
+		margin: 0 15px 0 0
+
+	.aws-show-clear .aws-search-field
+		font-size: 18px !important
+
+.wishlist_products_counter
+	cursor: pointer
+	
+	&:hover,
+	&:focus
+		&::before
+			transform: scale(.8)
+
+	&::before
+		transition: all .6s
+
+
+.columns-3
+	width: 100%
+
+.widget_shopping_cart
+	display: none !important
+		
+.profilepress-reset-status
+	text-align: center
+
+.woocommerce-shipping-methods li,
+.wc_payment_methods
+
+	label
+		position: relative
+		padding-left: 50px
+		color: #9c9c9c
+		cursor: pointer
+		margin-bottom: 0
+		margin-right: 0
+		transition: all .6s
+		padding: 0 0 0 30px
+		border: none
+		line-height: 1
+		margin-bottom: 20px
+
+		&:last-child
+			margin-bottom: 0
+		
+
+		&::before,
+		&::after
+			content: ''
+			position: absolute
+			left: 0
+			transition: all .6s
+
+		&::before
+			width: 15px
+			height: 15px
+			border: 1px solid $accent
+
+		&::after
+			width: 9px
+			height: 9px
+			border: 1px solid $accent
+			background: $accent
+			left: 3px
+			top: 3px
+
+	input[type="radio"]
+		display: none
+
+	input[type="radio"]:checked + label
+		color: $text
+		&::after
+			transform: scale(1)
+
+	input[type="radio"] + label::after
+		transform: scale(0)
+
 
 @import "media" // Always at the end

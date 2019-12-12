@@ -126,7 +126,7 @@ require get_template_directory() . '/includes/currency.php';
 /**
  * filter - фильтр каталога
  */
-// require get_template_directory() . '/includes/filter.php';
+require get_template_directory() . '/includes/filter.php';
 
 
 
@@ -148,23 +148,17 @@ if ( class_exists( 'WooCommerce' ) ) {
 require get_template_directory() . '/includes/cart.php';
 
 
+add_filter( 'woocommerce_billing_fields' , 'custom_override_billing_fields' );
 
-/**
- * Акции 
- */
-// require get_template_directory() . '/includes/post-type.php';
-
-
-//------------------настройка- ACF---------------------
-    if( function_exists('acf_add_options_page') ) {
-     
-        $option_page = acf_add_options_page(array(
-            'page_title'    => 'Настройка темы',
-            'menu_title'    => 'Настройка темы',
-            'menu_slug'     => 'theme-general-settings',
-            'capability'    => 'edit_posts',
-            'redirect'  => false
-        ));
-     
-    }
-
+function custom_override_billing_fields( $fields ) {
+  // unset($fields['billing_first_name']);
+  unset($fields['billing_last_name']);
+  // unset($fields['billing_phone']);
+  // unset($fields['billing_email']);
+  unset($fields['billing_company']);
+  // unset($fields['billing_address_2']);
+  unset($fields['billing_state']);
+  // unset($fields['billing_country']);
+  unset($fields['billing_postcode']);
+  return $fields;
+}

@@ -78,7 +78,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 						</td>
 
 
-						<td class="product-quantity" data-title="<?php esc_attr_e( 'Quantity', 'woocommerce' ); ?>">
+						<td class="product-quantity woocommerce__product-quantity" data-title="<?php esc_attr_e( 'Quantity', 'woocommerce' ); ?>">
 						<?php
 						if ( $_product->is_sold_individually() ) {
 							$product_quantity = sprintf( '1 <input type="hidden" name="cart[%s][qty]" value="1" />', $cart_item_key );
@@ -100,18 +100,18 @@ do_action( 'woocommerce_before_cart' ); ?>
 						?>
 						</td>
 
-						<td class="product-subtotal" data-title="<?php esc_attr_e( 'Subtotal', 'woocommerce' ); ?>">
+						<td class="product-subtotal woocommerce__product-subtotal" data-title="<?php esc_attr_e( 'Subtotal', 'woocommerce' ); ?>">
 							<?php
 								echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
 							?>
 						</td>
 
-						<td class="product-remove">
+						<td class="product-remove woocommerce__product-remove">
 							<?php
 								echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 									'woocommerce_cart_item_remove_link',
 									sprintf(
-										'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">&times;</a>',
+										'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s"></a>',
 										esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
 										esc_html__( 'Remove this item', 'woocommerce' ),
 										esc_attr( $product_id ),
@@ -128,24 +128,6 @@ do_action( 'woocommerce_before_cart' ); ?>
 			?>
 
 			<?php do_action( 'woocommerce_cart_contents' ); ?>
-
-			<tr>
-				<td colspan="6" class="actions">
-
-					<?php if ( wc_coupons_enabled() ) { ?>
-						<div class="coupon">
-							<label for="coupon_code"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" /> <button type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?></button>
-							<?php do_action( 'woocommerce_cart_coupon' ); ?>
-						</div>
-					<?php } ?>
-
-					<button type="submit" class="button" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
-
-					<?php do_action( 'woocommerce_cart_actions' ); ?>
-
-					<?php wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce' ); ?>
-				</td>
-			</tr>
 
 			<?php do_action( 'woocommerce_after_cart_contents' ); ?>
 		</tbody>
