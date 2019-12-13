@@ -17,6 +17,8 @@ $(function() {
     },
   });
 
+//--------------------------------------scroll------------------------------
+   $('.woocommerce__shop_table').jScrollPane();
 
 //------------------------------гамбургер-----------------------------
   $('.hamburger').click(function() {
@@ -56,4 +58,28 @@ $(function() {
   });
 
 
+//------------------------------acardeon---------------------------
+  $(".chw-widget form, .chw-widget ul").slideUp("slow");
+  $(".chw-widget").first().addClass('active');
+  $(".active form, .active ul").slideDown("slow");
+
+  $(".chw-widget h2").on("click", function(){
+    if ($(this).parent().hasClass('active')) {
+      $(this).parent().removeClass('active');
+      $(".chw-widget form, .chw-widget ul").slideUp("slow");
+    }
+    else {
+      $(".active form, .active ul").slideUp("slow");
+      $(".active").removeClass('active');
+      $(this).parent().addClass('active');
+      $(".active form, .active ul").slideDown("slow");
+    }
+  });
+
+
 });
+
+//--------------------------------------scroll------------------------------
+  $(window).resize(function(event) {
+   $('.woocommerce__shop_table').jScrollPane();
+  });

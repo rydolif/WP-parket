@@ -41,6 +41,8 @@ gulp.task('js', function() {
 		'parket/assets/libs/swiper/swiper.min.js', 			//----слайдер
 		'parket/assets/libs/fancybox/jquery.fancybox.js', 			//----слайдер			
 		'parket/assets/libs/jquery.popupoverlay.js', 			//----слайдер			
+		'parket/assets/libs/jscrollpane/jquery.jscrollpane.js', 			//----слайдер			
+		'parket/assets/libs/jscrollpane/jquery.mousewheel.js', 			//----слайдер			
 		'parket/assets/js/common.js', // Always at the end
 	])
 	.pipe(plumber())

@@ -270,6 +270,10 @@
 	a
 		color: #bababa
 
+		&:hover,
+		&:focus
+			color: $accent
+
 
 	.breadcrumbs__separator
 		margin: 0 10px
@@ -1344,6 +1348,10 @@ div.wpcf7-mail-sent-ok
 		label
 			display: none
 
+
+	&-order-overview__order
+		padding: 10px 0
+
 .shop__list
 	display: flex
 	flex-wrap: wrap
@@ -1431,5 +1439,36 @@ div.wpcf7-mail-sent-ok
 	input[type="radio"] + label::after
 		transform: scale(0)
 
+.jspVerticalBar
+	width: 6px
+	margin: 10px 5px 10px 0
+
+.jspTrack
+	background-color: #fff
+
+.jspDrag
+	background-color: #e1e1e1
+	border-radius: 5px
+
+.woocommerce-order
+	text-align: center
+
+.woocommerce-thankyou-order-details,
+.woocommerce-order-details
+	margin-bottom: 20px
+
+
+.chw-widget
+	h2
+		font-size: 18px
+		margin-bottom: 0
+		line-height: 1
+		padding: 15px 0
+		border-bottom: 1px solid #e1e1e1
+		font-weight: 400
+
+	form, ul
+		padding: 20px 0
+	
 
 @import "media" // Always at the end
