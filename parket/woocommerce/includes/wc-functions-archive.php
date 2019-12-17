@@ -3,27 +3,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-//--------------------------------------------wrap--------------------------------
+//--------------------------------------------wrap_cart--------------------------------
 	add_action( 'woocommerce_before_main_content', 'woocommerce_before_main_content_wrap', 10 );
 	function woocommerce_before_main_content_wrap() {
 		?>
+
 		<section class="catalog">
 			<div class="catalog__container container">
 
 				<div class="grums"><?php woocommerce_breadcrumb(); ?></div>
-
-				<div class="catalog__filter">
-					<?php
- 
-					if ( is_active_sidebar( 'custom-header-widget' ) ) : ?>
-					    <div id="header-widget-area" class="chw-widget-area widget-area" role="complementary">
-					 <?php dynamic_sidebar( 'custom-header-widget' ); ?>
-					    </div>
-					 
-					<?php endif; ?>
-				</div>
-
-				<div class="catalog__wrap">
+				
 		<?php 
 	}
 
@@ -31,8 +20,36 @@ if ( ! defined( 'ABSPATH' ) ) {
 	function woocommerce_after_main_content_wrap() {
 		?>
 				</div>
+		<?php 
+	}
+
+
+//--------------------------------------------wrap_arhive_filter-------------------------------
+	add_action( 'woocommerce_before_shop_loop', 'woocommerce_before_shop_loop_wrap', 10 );
+	function woocommerce_before_shop_loop_wrap() {
+		?>
+
+			<div class="catalog__filter">
+				<?php
+
+				if ( is_active_sidebar( 'custom-header-widget' ) ) : ?>
+				    <div id="header-widget-area" class="chw-widget-area widget-area" role="complementary">
+				 <?php dynamic_sidebar( 'custom-header-widget' ); ?>
+				    </div>
+				 
+				<?php endif; ?>
 			</div>
-		</div>
+
+			<div class="catalog__wrap">
+
+
+		<?php 
+	}
+
+	add_action( 'woocommerce_after_shop_loop', 'woocommerce_after_shop_loop_wrap', 20 );
+	function woocommerce_after_shop_loop_wrap() {
+		?>
+			</div>
 		<?php 
 	}
 
@@ -93,7 +110,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	add_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title_wrap', 10 );
 	function woocommerce_template_loop_product_title_wrap() {
 
-		echo '<h4>' . get_the_title() . '</h4>';
+		?>
+
+			<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+
+		<?php
 
 	}
 

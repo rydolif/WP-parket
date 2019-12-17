@@ -81,10 +81,16 @@
 							) );
 						?>
 					</div>
+			
+					<div class="header__like">
+						<?php echo do_shortcode( '[ti_wishlist_products_counter]' ); ?>
+						<?php echo do_shortcode( '[ti_wishlistsview]' ); ?>
+					</div>
 
-					<?php echo do_shortcode( '[ti_wishlist_products_counter]' ); ?>
 				
-					<?php cart_link(); ?><?php the_widget( 'WC_Widget_Cart', 'title=' ); ?>
+					<div class="header__cart">
+						<?php cart_link(); ?><?php the_widget( 'WC_Widget_Cart', 'title=' ); ?>
+					</div>
 
 				</div>
 

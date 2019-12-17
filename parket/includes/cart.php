@@ -5,7 +5,7 @@
 	if ( ! function_exists( 'cart_link' ) ) {
 	 function cart_link() {
 	 ?>
-	<a class="cart-contents header__cart hover" href="<?php echo get_home_url(); ?>/cart/">
+	<a class="cart-contents hover" href="<?php echo get_home_url(); ?>/cart/">
 		<span class="navigation__info_cart">
 			<img src="<?php echo get_template_directory_uri(); ?>/assets/img/svg/shopping-cart.svg" alt="">
 			<span class="count">
@@ -27,7 +27,7 @@
 	 	<span class="navigation__info_cart">
 	 		<img src="<?php echo get_template_directory_uri(); ?>/assets/img/svg/shopping-cart.svg" alt="">
 	 		<span class="count">
-	 			<?php echo sprintf (_n( '%d  ', '%d  ', WC()->cart->cart_contents_count ), WC()->cart->cart_contents_count ); ?>
+				<?php echo sprintf (_n( '%d  ', '%d  ', WC()->cart->cart_contents_count ), WC()->cart->cart_contents_count ); ?>
 	 		</span>
 	 	</span>
 	 </a> 

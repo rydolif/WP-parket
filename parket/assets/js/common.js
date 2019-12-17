@@ -17,8 +17,6 @@ $(function() {
     },
   });
 
-//--------------------------------------scroll------------------------------
-   $('.woocommerce__shop_table').jScrollPane();
 
 //------------------------------гамбургер-----------------------------
   $('.hamburger').click(function() {
@@ -77,9 +75,36 @@ $(function() {
   });
 
 
+//------------------------------header__cart---------------------------
+  $('.header__cart').hover(
+      function(){ $(this).addClass('header__cart--active'); },
+      function(){ $(this).removeClass('header__cart--active'); }
+  );
+
+
+//------------------------------header__like---------------------------
+  $('.header__like').hover(
+      function(){ $(this).addClass('header__like--active'); },
+      function(){ $(this).removeClass('header__like--active'); }
+  );
+  
+
+//--------------------------------------scroll------------------------------
+   $('.woocommerce__shop_table').jScrollPane();
+
+//--------------------------------------scroll------------------------------
+     
+  function cart() {
+    $('.woocommerce-mini-cart').jScrollPane();
+    $('.header__like .tinv-wishlist').jScrollPane();
+  }
+  setTimeout(cart, 3000);
+
 });
 
 //--------------------------------------scroll------------------------------
   $(window).resize(function(event) {
-   $('.woocommerce__shop_table').jScrollPane();
+    $('.woocommerce__shop_table').jScrollPane();
+    $('.woocommerce-mini-cart').jScrollPane();
+    $('.header__like .tinv-wishlist').jScrollPane();
   });
