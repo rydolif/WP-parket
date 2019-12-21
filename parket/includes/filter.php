@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-//------------------виджеты----------------------
+//------------------виджеты-filter---------------------
   function wpb_widgets_init() {
    
    register_sidebar( array(
@@ -20,4 +20,15 @@ if ( ! defined( 'ABSPATH' ) ) {
   }
   add_action( 'widgets_init', 'wpb_widgets_init' );
 
+
+//------------------виджеты-brend---------------------
+    register_sidebar( array(
+      'name' => __( 'Бренды', '' ),
+      'id' => 'top-area',
+      'description' => __( 'Бренды', '' ),
+      'before_widget' => '',
+      'after_widget' => '',
+      'before_title' => '<h3>',
+      'after_title' => '</h3>',
+  ) );
 

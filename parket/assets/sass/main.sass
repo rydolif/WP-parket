@@ -403,7 +403,6 @@
 		&:hover,
 		&:focus
 			ul
-				display: none
 				top: 50px
 				z-index: 2
 				opacity: 1
@@ -464,7 +463,7 @@
 
 
 .grums
-	padding: 40px 0 50px
+	padding: 40px 0
 	color: #bababa
 	width: 100%
 
@@ -807,8 +806,14 @@
 				&:last-child
 					transform: translate(-50%, -50%) rotate(90deg)
 
+			img
+				position: absolute
+				top: 50%
+				left: 50%
+				transform: translate(-50%, -50%)
+
 	&__info
-		margin-bottom: 15px
+		margin-bottom: 5px
 
 		p
 			display: flex
@@ -821,53 +826,77 @@
 			&:last-child
 				margin-bottom: 0
 
-		&_price
+		ins, b
 			font-size: 24px
 			font-weight: 700
+			text-decoration: none
 
-		&_old
+		.woocommerce-Price-currencySymbol
+			font-size: 18px !important
+
+		del
 			color: #b5b5b5
 			text-decoration: line-through
+			font-size: 18px !important
+
+	&__attr
+		margin-bottom: 15px
+		width: 100%
+
+		p
+			display: flex
+			justify-content: space-between
+			flex-wrap: wrap
+			line-height: 1
+			align-items: center
+			margin-bottom: 5px
+
+			&:last-child
+				margin-bottom: 0
 
 	&__form
 		display: flex
 		justify-content: space-between
 		flex-wrap: wrap
-		margin-bottom: 20px
 
-		input
-			width: 75px
-			height: 35px
-			border: 1px solid $gray
-			text-align: center
-			background-color: $white
-			color: $text
-			font-weight: 500
-			font-size: 16px
-			margin: 0 5px
-			padding: 0 5px
-
-		a
-			display: block
-			background-color: #dfe1e0
-			height: 35px
-			width: 35px
-			line-height: 35px
-			text-align: center
-			font-size: 22px
-			font-weight: 700
+		&_add
+			width: 100%
 
 		&_quantity
-			display: flex
-			justify-content: space-between
-			margin-bottom: 0
-			transition: all .6s
+			div
+				display: flex
+				justify-content: space-between
+				margin-bottom: 0
+				transition: all .6s
 
 		&_block
-			p
+			label
 				font-size: 16px
 				color: #cbcdcc
 				margin-bottom: 15px
+
+			input
+				width: 75px
+				height: 35px
+				border: 1px solid $gray
+				text-align: center
+				background-color: $white
+				color: $text
+				font-weight: 500
+				font-size: 16px
+				margin: 0 5px
+				padding: 0 5px
+
+			button
+				display: block
+				background-color: #dfe1e0
+				height: 35px
+				width: 35px
+				line-height: 35px
+				text-align: center
+				font-size: 22px
+				font-weight: 700
+				border: 0
 
 	&__price
 		display: flex
@@ -881,7 +910,8 @@
 		opacity: 0
 		height: 0
 		transform: scale(0)
-		
+		margin-bottom: 20px
+
 		&_green
 			color: $accent
 			font-weight: 500
@@ -934,15 +964,15 @@
 
 	&__block
 		position: absolute
-		top: 13px
-		left: 13px
-		right: 13px
+		top: 25px
+		left: 25px
+		right: 25px
 		display: flex
 		align-items: center
-		justify-content: space-between
+		justify-content: flex-end
 		z-index: 1
 
-		a
+		button
 			position: relative
 			display: block
 			background-color: rgba($white, .6)
@@ -1556,11 +1586,47 @@ div.wpcf7-mail-sent-ok
 		.count
 			display: none
 
-.shop__list
-	display: flex
-	flex-wrap: wrap
-	padding-top: 150px
-	margin: 0 -15px
+.shop
+
+	&__list
+		display: flex
+		align-items: flex-start
+		flex-wrap: wrap
+		margin: 0 -15px
+
+	&__description
+		margin-bottom: 80px
+		display: flex
+		flex-wrap: wrap
+		align-items: center
+		justify-content: space-between
+
+		img
+			margin-bottom: 15px
+			max-width: 220px
+			min-width: 180px
+			width: 20%
+
+		div
+			width: 75%
+
+.top_brend
+	margin-top: 40px
+	width: 100%
+
+	ul
+		display: flex
+		flex-wrap: wrap
+
+	li
+		margin-right: 35px
+		margin-bottom: 15px
+
+	a
+		font-size: 24px
+		text-transform: uppercase
+		font-weight: 500
+
 
 .aws-container 
 	.aws-search-form .aws-search-clear
@@ -1583,7 +1649,8 @@ div.wpcf7-mail-sent-ok
 		transition: all .6s
 
 
-.columns-3
+.columns-3,
+.columns-4
 	width: 100%
 
 		
@@ -1659,7 +1726,10 @@ div.wpcf7-mail-sent-ok
 	margin-bottom: 20px
 
 
+
+
 .chw-widget
+	border-bottom: 1px solid #e1e1e1
 
 	.woocommerce-widget-layered-nav-list__item--chosen
 		a
@@ -1678,8 +1748,8 @@ div.wpcf7-mail-sent-ok
 		font-size: 18px
 		margin-bottom: 0
 		line-height: 1
-		padding: 15px 0
-		border-bottom: 1px solid #e1e1e1
+		padding: 15px 25px 15px 0
+		cursor: pointer
 		font-weight: 400
 
 		&::before
@@ -1687,12 +1757,13 @@ div.wpcf7-mail-sent-ok
 			position: absolute
 			top: 50%
 			right: 15px
-			transform: translate(0, -50%) rotate(-45deg)
+			transform: translate(0, -50%) rotate(-135deg)
 			display: block
 			width: 10px
 			height: 10px
-			border-top: 1px solid #e1e1e1
-			border-left: 1px solid #e1e1e1
+			border-top: 1px solid $text
+			border-left: 1px solid $text
+			transition: all .6s
 	
 	form, ul
 		padding: 20px 0
@@ -1738,6 +1809,13 @@ div.wpcf7-mail-sent-ok
 				opacity: 1
 
 
+	&--active
+		h2
+			&::before
+				transform: translate(0, -60%) rotate(45deg)
+
+
+
 .yith-wcan-reset-navigation
 	&::before,
 	&::after
@@ -1765,6 +1843,7 @@ div.wpcf7-mail-sent-ok
 				background-color: $accent !important
 				box-shadow: 0 0 10px 0 rgba($accent, 1)
 				border: 1px solid $accent
+				color: #fff
 
 		i
 			display: none
@@ -1915,12 +1994,242 @@ div.wpcf7-mail-sent-ok
 
 
 
-// .flex-control-nav
-// 	display: flex
-// 	justify-content: space-between
-// 	list-style-type: none
+.flex-control-nav
+	display: flex
+	justify-content: space-between
+	list-style-type: none
+
+.swiper-button-next:after, .swiper-button-prev:after
+	display: none
+
+.tovar
+	width: 100%
+	display: flex
+	justify-content: space-between
+	flex-wrap: wrap
+
+	.tabs
+		&__link
+			padding-bottom: 10px
+			text-transform: uppercase
+			
+		&__list
+			margin-bottom: 50px
+
+	h1
+		width: 100%
+		text-align: center
+		font-size: 24px
+		text-transform: uppercase
+		margin-bottom: 50px
+
+	.cart__img_plus
+		width: 70px
+		height: 70px
+
+		img
+			width: 20px !important
+			height: 20px !important
+
+	&__slider
+		width: 31%
+
+	&__img
+		margin-bottom: 5px
+
+		.swiper-slide
+			width: 100%
+
+		img
+			width: 100%
+
+		.cart__img_plus,
+		.cart__next,
+		.cart__prev
+			opacity: 1 !important
+
+		.cart__next,
+		.cart__prev
+			background-color: #fff
+			height: 75px
+			width: 55px
+
+		.cart__prev
+			right: 55px
+
+	&__previews
+		img
+			width: 100%
+			height: auto
+
+		.swiper-slide-thumb-active
+			border: 3px solid $accent
+			transition: all .6s
+
+	&__attr
+		width: 30%
+
+		p
+			display: flex
+			justify-content: space-between
+			flex-wrap: wrap
+
+	&__calculation
+		width: 30%
+
+		&_wrap
+			background-color: $gray
+			padding: 30px
+			width: 100%
+			margin-bottom: 45px
+
+			button
+				width: 55px
+				height: 55px
+
+			label
+				font-size: 18px
+				color: $text
+				margin-bottom: 20px
+				font-weight: 600
+
+			input
+				width: 125px
+				height: 55px
+				line-height: 55px
+
+		.custom-input-number
+			justify-content: center !important
+			margin-bottom: 25px !important
+
+		.cart__price
+			display: flex !important
+
+		.total-price
+			display: flex
+			justify-content: space-between
+			align-items: center
+
+			&__value
+				font-size: 32px
+
+
+.onsale
+	display: none		
+
+.tinvwl-to-left
+	display: none
+
+
+
+.related
+
+	&__title
+		display: flex
+		
+		h2
+			margin-right: 20px
+			line-height: 1.4
+			text-transform: uppercase
+			
+	&__slider
+		padding-top: 70px
+
+	&__next,
+	&__prev
+		position: relative
+		background-color: transparent
+		right: auto
+		left: auto
+		top: auto
+		bottom: auto
+		margin-top: 0
+		width: 40px
+		height: 40px
+
+		span
+			display: block
+			width: 20px
+			height: 20px
+			border-top: 1px solid $text
+			border-left: 1px solid $text
+			position: absolute
+			top: 50%
+			left: 50%
+			transition: all .6s
+
+	&__prev
+		span
+			transform: translate(-50%, -50%) rotate(-45deg)
+
+	&__next
+		span
+			transform: translate(-50%, -50%) rotate(135deg)
 	
-// .tovar
-// 	width: 100%
+	.cart
+		width: 100%
+
+		img
+			width: auto
+
+	.shop__list
+		margin: 0
+			
+
+.attribute
+
+	&__slider
+		padding-top: 70px
+
+	&__next,
+	&__prev
+		position: relative
+		background-color: transparent
+		right: auto
+		left: auto
+		top: auto
+		bottom: auto
+		margin-top: 0
+		width: 40px
+		height: 40px
+
+		span
+			display: block
+			width: 20px
+			height: 20px
+			border-top: 1px solid $text
+			border-left: 1px solid $text
+			position: absolute
+			top: 50%
+			left: 50%
+			transition: all .6s
+
+	&__prev
+		span
+			transform: translate(-50%, -50%) rotate(-45deg)
+
+	&__next
+		span
+			transform: translate(-50%, -50%) rotate(135deg)
+	
+	.cart
+		width: 100%
+
+		img
+			width: auto
+
+	.shop__list
+		margin: 0
+			
+
+.product_attribute
+	width: 100%
+
+
+table
+	.custom-input-number
+		button
+			display: none !important
+
 
 @import "media" // Always at the end

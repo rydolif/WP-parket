@@ -27,5 +27,20 @@ remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 3
 
 
 
+//----------------------------------------tovar---------------------------------------
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10);
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15);
 
 
+
+
+
+
+
+function my_related_products_args( $args ) {
+$args['posts_per_page'] = 20; // количество "Похожих товаров"
+$args['columns'] = 4; // количество колонок П.т
+return $args;
+}
+add_filter( 'woocommerce_output_related_products_args', 'my_related_products_args' );
+/** задаём количество похожих товаров, колонок */

@@ -5,26 +5,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 //---------------------------------------------breadcrumb-----------------------------------------------
 remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb',  20 );
-
-
-
-//---------------------------------------------title product-----------------------------------------------
-remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title',  5 );
-
-add_action( 'woocommerce_single_product_summary', 'single_title',  5 );
-	
-function single_title() {
-	if ( ! is_archive() ) {
-?>
-	<h1>
-		<?php the_title(); ?>
-	</h1>
-
-<?php
-	}
-}
-
-
 function woocommerce_breadcrumb( $args = array() ) {
   $args = wp_parse_args( $args, apply_filters( 'woocommerce_breadcrumb_defaults', array(
     'delimiter'   => ' &#8250; ',
@@ -50,3 +30,19 @@ function woocommerce_breadcrumb( $args = array() ) {
 
   wc_get_template( 'global/breadcrumb.php', $args );
 } 
+
+//---------------------------------------------title product-----------------------------------------------
+  remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title',  5 );
+
+  add_action( 'woocommerce_single_product_summary', 'single_title',  5 );
+    
+  function single_title() {
+    if ( ! is_archive() ) {
+  ?>
+    <h1>
+      <?php the_title(); ?>
+    </h1>
+
+  <?php
+    }
+  }

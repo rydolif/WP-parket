@@ -37,7 +37,7 @@ get_header();
 			</div>
 
 			<div class="tabs__btn">
-				<a href="#" class="btn btn--cart login_open">Еще</a>
+				<a href="<?php echo get_home_url(); ?>/shop/" class="btn btn--cart">Еще</a>
 			</div>
 
 		</div>

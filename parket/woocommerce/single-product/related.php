@@ -21,26 +21,75 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( $related_products ) : ?>
 
+
+	<?php if( have_rows('related') ): ?>
+
+		<section class="related product_attribute">
+
+			<div class="related__title">
+				<h2>К этому товару подойдет</h2>
+				<div class="attribute__prev swiper-button-prev"><span></span></div>
+				<div class="attribute__next swiper-button-next"><span></span></div>
+			</div>
+
+			<div class="attribute__slider swiper-container">
+				<div class="swiper-wrapper">
+
+				<?php while( have_rows('related') ): the_row(); 
+					$id = get_sub_field('id');
+				?>
+
+					<div class="swiper-slide">
+						<?php
+							echo do_shortcode( '[product id="$id"]' );
+						?>
+					</div>
+
+				<?php endwhile; ?>
+
+				</div>
+			</div>
+
+		</section>
+
+	<?php endif; ?>
+
 	<section class="related products">
 
-		<h2><?php esc_html_e( 'Related products', 'woocommerce' ); ?></h2>
-
+		<div class="related__title">
+			<h2>Вам также могут понравиться</h2>
+			<div class="related__prev swiper-button-prev"><span></span></div>
+			<div class="related__next swiper-button-next"><span></span></div>
+		</div>
+		
 		<?php woocommerce_product_loop_start(); ?>
 
-			<?php foreach ( $related_products as $related_product ) : ?>
+		<div class="related__slider swiper-container">
+			<div class="swiper-wrapper">
 
-				<?php
-				 	$post_object = get_post( $related_product->get_id() );
+				<?php foreach ( $related_products as $related_product ) : ?>
 
-					setup_postdata( $GLOBALS['post'] =& $post_object );
+					<div class="swiper-slide">
 
-					wc_get_template_part( 'content', 'product' ); ?>
+					<?php
+					 	$post_object = get_post( $related_product->get_id() );
 
-			<?php endforeach; ?>
+						setup_postdata( $GLOBALS['post'] =& $post_object );
+
+						wc_get_template_part( 'content', 'product' ); 
+					?>
+
+					</div>
+
+				<?php endforeach; ?>
+
+			</div>
+		</div>
 
 		<?php woocommerce_product_loop_end(); ?>
 
 	</section>
+
 
 <?php endif;
 
