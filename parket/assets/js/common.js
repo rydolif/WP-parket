@@ -12,7 +12,6 @@ $(function() {
 
 //------------------------------cart slider-----------------------------
   var cart = new Swiper('.cart__img', {
-    lazy: true,
     navigation: {
       nextEl: '.cart__next',
       prevEl: '.cart__prev',
@@ -21,7 +20,6 @@ $(function() {
 
 //------------------------------cart slider-----------------------------
   var tovarPreviews = new Swiper('.tovar__previews', {
-    lazy: true,
     spaceBetween: 5,
     slidesPerView: 4,
     freeMode: true,
@@ -29,9 +27,8 @@ $(function() {
     watchSlidesProgress: true,
   });
 
-//------------------------------cart slider-----------------------------
+//------------------------------tovar slider-----------------------------
   var cartImg = new Swiper('.tovar__img', {
-    lazy: true,
     navigation: {
       nextEl: '.cart__next',
       prevEl: '.cart__prev',
@@ -41,10 +38,10 @@ $(function() {
     }
   });
 
-//------------------------------cart slider-----------------------------
-  var related = new Swiper('.attribute__slider', {
+//------------------------------attribute slider-----------------------------
+  var attribute = new Swiper('.attribute__slider', {
     spaceBetween: 0,
-    slidesPerView: 4,
+    slidesPerView: 1,
     freeMode: true,
     watchSlidesVisibility: true,
     watchSlidesProgress: true,
@@ -52,12 +49,24 @@ $(function() {
       nextEl: '.attribute__next',
       prevEl: '.attribute__prev',
     },
+    nested: true,
+    breakpoints: {
+      1440: {
+        slidesPerView: 4,
+      },
+      992: {
+        slidesPerView: 3,
+      },
+      576: {
+        slidesPerView: 2,
+      }
+    }
   });
 
-//------------------------------cart slider-----------------------------
+//------------------------------related slider-----------------------------
   var related = new Swiper('.related__slider', {
     spaceBetween: 0,
-    slidesPerView: 4,
+    slidesPerView: 1,
     freeMode: true,
     watchSlidesVisibility: true,
     watchSlidesProgress: true,
@@ -65,6 +74,18 @@ $(function() {
       nextEl: '.related__next',
       prevEl: '.related__prev',
     },
+    nested: true,
+    breakpoints: {
+      1440: {
+        slidesPerView: 4,
+      },
+      992: {
+        slidesPerView: 3,
+      },
+      576: {
+        slidesPerView: 2,
+      }
+    }
   });
 
 

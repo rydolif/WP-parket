@@ -40,7 +40,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						</div>
 						<div class="woocommerce__cart-item_wrap">
 							<div class="woocommerce__cart-item_line product-name woocommerce__product-remove">
-								<?php echo apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ); ?> шт
+								<?php echo apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ); ?>
 								<?php echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times; %s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); ?>
 								<?php echo wc_get_formatted_cart_item_data( $cart_item ); ?>
 							</div>

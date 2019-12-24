@@ -1365,6 +1365,10 @@ div.wpcf7-mail-sent-ok
 	&__checkout
 		display: flex
 		justify-content: space-between
+		
+		.quantity
+			button
+				display: none
 
 		&_col
 			width: 45%
@@ -2169,8 +2173,8 @@ div.wpcf7-mail-sent-ok
 	.cart
 		width: 100%
 
-		img
-			width: auto
+		// img
+		// 	width: auto
 
 	.shop__list
 		margin: 0
@@ -2231,5 +2235,12 @@ table
 		button
 			display: none !important
 
+.swiper-container
+	.cart
+		// img
+		// 	width: 323px
+
+		&__img a
+			max-width: 100%
 
 @import "media" // Always at the end
