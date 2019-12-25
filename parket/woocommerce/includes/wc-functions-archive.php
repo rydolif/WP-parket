@@ -116,14 +116,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		foreach( $attachment_ids as $attachment_id ) {
 		  
-		  echo '<a href="';
+		  echo '<div class="swiper-slide"><a href="';
 		  echo $Original_image_url = wp_get_attachment_url( $attachment_id );
 		  echo '" data-fancybox="';
 		  echo $product_id;
-		  echo '" class="swiper-slide">';
+		  echo '" class="">';
 		  echo '<span class="cart__img_plus"><span></span><span></span></span>';
-		  echo wp_get_attachment_image( $attachment_id, 'shop swiper-lazy');
-		  echo '</a>';  
+		  echo wp_get_attachment_image( $attachment_id, 'shop');
+		  echo '</a></div>';  
 		}
 	   
 	   ?>

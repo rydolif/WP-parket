@@ -47,7 +47,7 @@ global $product;
 				  echo '<span class="cart__img_plus"><img src="';
 				  echo get_template_directory_uri();
 				  echo '/assets/img/header__search.png" alt=""></span>';
-				  echo wp_get_attachment_image( $attachment_id, 'shop swiper-lazy' );
+				  echo wp_get_attachment_image( $attachment_id, 'shop' );
 				  echo '</a>';  
 				}
 			?>

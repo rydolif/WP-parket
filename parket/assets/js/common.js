@@ -1,5 +1,6 @@
 $(function() {
 
+
 //-------------------------------активна ссилка на якій знаходишся для меню---------------------------------------
   $('.cabinet__nav ul a').each(function () {
       var location = window.location.href;
@@ -40,16 +41,19 @@ $(function() {
 
 //------------------------------attribute slider-----------------------------
   var attribute = new Swiper('.attribute__slider', {
-    spaceBetween: 0,
+    spaceBetween: 5,
     slidesPerView: 1,
+    preloadImages: true,
+    updateOnImagesReady: true,
     freeMode: true,
     watchSlidesVisibility: true,
     watchSlidesProgress: true,
+    nested: true,
+    observeSlideChildren: true,
     navigation: {
       nextEl: '.attribute__next',
       prevEl: '.attribute__prev',
     },
-    nested: true,
     breakpoints: {
       1440: {
         slidesPerView: 4,
@@ -65,16 +69,19 @@ $(function() {
 
 //------------------------------related slider-----------------------------
   var related = new Swiper('.related__slider', {
-    spaceBetween: 0,
+    spaceBetween: 5,
     slidesPerView: 1,
+    preloadImages: true,
+    updateOnImagesReady: true,
     freeMode: true,
     watchSlidesVisibility: true,
     watchSlidesProgress: true,
+    nested: true,
+    observeSlideChildren: true,
     navigation: {
       nextEl: '.related__next',
       prevEl: '.related__prev',
     },
-    nested: true,
     breakpoints: {
       1440: {
         slidesPerView: 4,
@@ -179,3 +186,10 @@ $(function() {
     $('.woocommerce-mini-cart').jScrollPane();
     $('.header__like .tinv-wishlist').jScrollPane();
   });
+
+
+//----------------------------------------js----------------------------------
+  $(window).on('load', function(){
+    $('.preloader').delay(3000).fadeOut('slow');
+  });
+
