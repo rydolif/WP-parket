@@ -67,8 +67,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	function school_before_shop_loop_item_title() {
 		?>
 
-
-
 			<div class="cart__img swiper-container">
 				<div class="swiper-wrapper">
 		<?php 
@@ -192,24 +190,64 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<form class="cart__form add-to-cart-form" action="">
 
 			<div class="cart__attr">
-				<?php
-					foreach ($product_attributes as $attribute) {
-						if ($attribute->get_visible() && ($attribute['variation'] !== true)) {
-							array_push($visible_attr, $attribute);
+
+				<p class="product-attr">
+					<?php
+						// Получаем элементы таксономии атрибута shoes
+						$attribute_names = get_the_terms($product->get_id(), 'pa_klass');
+						$attribute_name = "pa_klass";
+						if ($attribute_names) {
+							// Вывод имени атрибута shoes
+							echo '<span class="producrt-attr__label">' . wc_attribute_label($attribute_name) . ': </span>';
+							echo '<b class="producrt-attr__name">';
+							// Выборка значения заданного атрибута
+							foreach ($attribute_names as $attribute_name):
+								// Вывод значений атрибута shoes
+								echo  $attribute_name->name . ', ' ;
+							endforeach;
+							echo '</b>';
 						}
-					}
+					?>
+				</p>
 
-					foreach ($visible_attr as $product_attribute_key => $product_attribute) :
-				?>
+				<p class="product-attr">
+					<?php
+						// Получаем элементы таксономии атрибута shoes
+						$attribute_names = get_the_terms($product->get_id(), 'pa_strana-proizvoditel');
+						$attribute_name = "pa_strana-proizvoditel";
+						if ($attribute_names) {
+							// Вывод имени атрибута shoes
+							echo '<span class="producrt-attr__label">' . wc_attribute_label($attribute_name) . ': </span>';
+							echo '<b class="producrt-attr__name">';
+							// Выборка значения заданного атрибута
+							foreach ($attribute_names as $attribute_name):
+								// Вывод значений атрибута shoes
+								echo  $attribute_name->name . ', ' ;
+							endforeach;
+							echo '</b>';
+						}
+					?>
+				</p>
 
-					<p class="product-attr <?php echo esc_attr($product_attribute['name']); ?>">
-						<span class="producrt-attr__label"><?php echo wp_kses_post(wc_attribute_label($product_attribute['name'])); ?>: </span>
-						<b class="producrt-attr__name"><?php echo wp_kses_post($product->get_attribute($product_attribute['name'])); ?></b>
-					</p>
+				<p class="product-attr">
+					<?php
+						// Получаем элементы таксономии атрибута shoes
+						$attribute_names = get_the_terms($product->get_id(), 'pa_brend');
+						$attribute_name = "pa_brend";
+						if ($attribute_names) {
+							// Вывод имени атрибута shoes
+							echo '<span class="producrt-attr__label">' . wc_attribute_label($attribute_name) . ': </span>';
+							echo '<b class="producrt-attr__name">';
+							// Выборка значения заданного атрибута
+							foreach ($attribute_names as $attribute_name):
+								// Вывод значений атрибута shoes
+								echo  $attribute_name->name . ', ' ;
+							endforeach;
+							echo '</b>';
+						}
+					?>
+				</p>
 
-				<?php
-					endforeach;
-				?>
 			</div>
 
 			<div class="cart__form_block">
@@ -247,17 +285,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	}
 
 
-//--------------------------------------------archive_description--------------------------------
+//--------------------------------------------archive_description IMG--------------------------------
 
-	add_action( 'woocommerce_archive_description', 'woocommerce_category_image', 2 );
-		function woocommerce_category_image() {
-			if ( is_product_category() ){
-			global $wp_query;
-			$cat = $wp_query->get_queried_object();
-			$thumbnail_id = get_term_meta( $cat->term_id, 'thumbnail_id', true );
-			$image = wp_get_attachment_url( $thumbnail_id );
-			if ( $image ) {
-				echo '<img class="category-product-image" src="' . $image . '" alt="'.$cat->name.'" />';
-			}
-		}
-	}
+	// add_action( 'woocommerce_archive_description', 'woocommerce_category_image', 2 );
+	// 	function woocommerce_category_image() {
+	// 		if ( is_product_category() ){
+	// 		global $wp_query;
+	// 		$cat = $wp_query->get_queried_object();
+	// 		$thumbnail_id = get_term_meta( $cat->term_id, 'thumbnail_id', true );
+	// 		$image = wp_get_attachment_url( $thumbnail_id );
+	// 		if ( $image ) {
+	// 			echo '<img class="category-product-image" src="' . $image . '" alt="'.$cat->name.'" />';
+	// 		}
+	// 	}
+	// }

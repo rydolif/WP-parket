@@ -49,10 +49,6 @@ if ( post_password_required() ) {
 
 		<?php
 
-			$length = (float) $product->get_length();
-			$width = (float) $product->get_width();
-			$height = (float) $product->get_height();
-
 			$product_attributes = $product->get_attributes();
 			$visible_attr = [];
 

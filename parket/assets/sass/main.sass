@@ -4,6 +4,10 @@
 .no-scroll
 	overflow: hidden
 
+
+.debag
+	margin-right: .1px
+
 .wrap
 	z-index: 1000
 
@@ -378,7 +382,7 @@
 .nav
 	line-height: 1.2
 	box-shadow: 0 5px 5px 0 rgba(#2a291e, .2)
-	z-index: 1000
+	z-index: 1001
 
 	&__media
 		display: none
@@ -387,7 +391,6 @@
 		display: flex
 		justify-content: space-between
 		background-color: $white
-		
 
 	a
 		padding: 10px
@@ -423,10 +426,53 @@
 			z-index: -1
 			opacity: 0
 			
-
 			a
 				padding: 5px 15px
 
+			li
+				position: relative
+
+				&:hover,
+				&:focus
+					ul
+						top: 0px
+						z-index: 2
+						opacity: 1
+						visibility: visible !important
+
+				&:last-child
+					margin-right: 0
+
+				ul
+					visibility: hidden !important
+					position: absolute
+					top: -50px
+					left: 100%
+					width: 250px
+					flex-direction: column
+					box-shadow: 0 0 5px 0 rgba($text, .5)
+					padding: 20px 0
+					transition: all .0s !important
+					z-index: -1
+					opacity: 0
+
+
+					
+					a
+						padding: 5px 15px
+
+			.menu-item-has-children
+			
+				&::before
+					content: ''
+					position: absolute
+					right: 15px
+					top: 50%
+					transform: translate(0, -50%) rotate(135deg)
+					width: 10px
+					height: 10px
+					border-top: 1px solid $text
+					border-left: 1px solid $text
 
 .about
 	padding: 55px 0
@@ -774,12 +820,12 @@
 		position: relative
 		margin-bottom: 35px
 
-		// img
-		// 	width: 100%
-		// 	height: auto
+		img
+			width: 100%
+			height: auto
 
-		// a
-		// 	display: block
+		a
+			display: block
 
 		&_plus
 			display: block
@@ -1118,7 +1164,6 @@
 	
 	img
 		width: 20px
-
 
 
 .error-404
@@ -1602,17 +1647,18 @@ div.wpcf7-mail-sent-ok
 		margin-bottom: 80px
 		display: flex
 		flex-wrap: wrap
-		align-items: center
+		align-items: flex-start
 		justify-content: space-between
 
 		img
 			margin-bottom: 15px
-			max-width: 220px
-			min-width: 180px
-			width: 20%
+			margin-right: 15px	
+			max-width: 270px
+			width: 100%
+			float: left
 
-		div
-			width: 75%
+		.spoiler-head
+			padding: 0
 
 .top_brend
 	margin-top: 40px
@@ -2046,7 +2092,8 @@ div.wpcf7-mail-sent-ok
 
 		img
 			width: 100%
-
+			height: auto
+			
 		.cart__img_plus,
 		.cart__next,
 		.cart__prev
@@ -2236,14 +2283,21 @@ table
 		button
 			display: none !important
 
-// .swiper-container
-// 	.cart
+.swiper-container
+	.cart
+		&__img
+			a
+				position: relative
 
-// 		&__img a
-// 			max-width: 100%
+			a, img
+				width: 319px
+				height: auto
+				
 
 .woocommerce-LoopProduct-link
 	display: none !important
+
+
 	
 
 @import "media" // Always at the end

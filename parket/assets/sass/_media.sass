@@ -112,6 +112,12 @@
 		font-size: 13px
 		margin-bottom: 5px
 
+	.swiper-container
+		.cart
+			&__img
+				a, img
+					width: 357px
+
 
 @media only screen and (max-width : 1200px)
 	.container
@@ -216,6 +222,12 @@
 	.shop__description img
 		min-width: 165px
 
+	.swiper-container
+		.cart
+			&__img
+				a, img
+					width: 287px
+
 
 @media only screen and (max-width : 992px)
 	.container
@@ -272,7 +284,7 @@
 		z-index: 1000
 		transition: all .6s
 		overflow: auto
-		padding-bottom: 90px
+		padding-bottom: 190px
 		font-size: 18px
 
 		&__media
@@ -516,6 +528,19 @@
 	.modal
 		padding: 25px
 
+	.widget_shopping_cart
+		display: none
+
+	.header__like
+		.tinv-wishlist
+			display: none
+
+	.swiper-container
+		.cart
+			&__img
+				a, img
+					width: 336px
+
 
 @media only screen and (max-width : 767px)
 	.container
@@ -721,6 +746,18 @@
 	.related__title h2
 		font-size: 20px
 
+	.swiper-container
+		.cart
+			&__img
+				a, img
+					width: 251px
+
+	.nav li ul li
+		&:focus ul,
+		&:hover ul
+			top: 30px
+			left: 0
+
 
 @media only screen and (max-width : 576px)
 	.container
@@ -788,6 +825,10 @@
 		.cart
 			max-width: 320px
 			margin: 0 auto
+
+			&__img
+				a, img
+					width: 300px
 
 
 @media only screen and (max-width : 480px)
@@ -941,7 +982,6 @@
 		padding: 25px
 
 
-
 @media only screen and (max-width : 440px)
 	.header__logo
 		display: none
@@ -959,6 +999,21 @@
 
 	.woocommerce__cart_totals
 		width: 100%
+
+
+
+	
+	.swiper-container
+		.cart
+			max-width: 290px
+			margin: 0 auto
+			padding: 0
+
+			&__img
+				a, img
+					width: 290px
+
+
 
 
 

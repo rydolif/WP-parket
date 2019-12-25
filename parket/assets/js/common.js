@@ -193,3 +193,8 @@ $(function() {
     $('.preloader').delay(3000).fadeOut('slow');
   });
 
+     
+  function debag() {
+    $('body').addClass('debag');
+  }
+  setTimeout(debag, 3000);
