@@ -19,4 +19,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<div class="shop__list products">
+<div class="shop__list script products">

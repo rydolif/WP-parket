@@ -34,7 +34,7 @@ jQuery(function($) {
       +form.find("input[name=price]").val();
 
     return {
-      total_price: +current_qty * price,
+      total_price: + current_qty * price,
       area: +current_area,
       qty: +current_qty,
       area_per_item: areaPerItem

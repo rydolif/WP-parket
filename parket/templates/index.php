@@ -50,13 +50,13 @@ get_header();
 				<li><a href="#two" class="tabs__link">Популярное</a></li>
 			</ul>
 
-			<div id="one" class="tabs__wrap">
+			<div id="one" class="tabs__wrap script">
 
 				<?php echo do_shortcode('[products limit="12" columns="3" visibility="featured" ]'); ?>
 
 			</div>
 
-			<div id="two" class="tabs__wrap">
+			<div id="two" class="tabs__wrap script">
 
 				<?php echo do_shortcode('[best_selling_products per_page="12"]'); ?>
 
@@ -108,5 +108,6 @@ get_header();
 
 		</div>
 	</section>
+
 <?php
-get_footer();
+	get_footer();

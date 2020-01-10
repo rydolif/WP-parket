@@ -115,12 +115,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 		foreach( $attachment_ids as $attachment_id ) {
 		  
 		  echo '<div class="swiper-slide"><a href="';
-		  echo $Original_image_url = wp_get_attachment_url( $attachment_id );
-		  echo '" data-fancybox="';
-		  echo $product_id;
+		  the_permalink();
 		  echo '" class="">';
 		  echo '<span class="cart__img_plus"><span></span><span></span></span>';
-		  echo wp_get_attachment_image( $attachment_id, 'shop');
+		  echo '<img src="' . $medium_url = wp_get_attachment_image_src( $attachment_id, 'medium')[0] . '" alt="">';
 		  echo '</a></div>';  
 		}
 	   
@@ -157,7 +155,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="cart__info">
 
 			<?php global $product; if ( $price_html = $product->get_price_html() ) : ?>
-				<p><span>Цена: </span><b><?php echo $price_html; ?></b></p>
+				<p><span>Цена: </span><b><?php echo $price_html; ?> /м<sup>2</sup></b></p>
 			<?php endif; ?>
 
 		</div>
@@ -259,7 +257,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<div class="cart__form_block">
 				<label>Площадь покрытия (м<sup>2</sup>)</label>
 				<div class="cart__form_quantity product-qty">
-					<input min="0" step="0.1" value="<?php echo $size ?>" class="form-control" type="number" name="area">
+					<input min="0" step="<?php echo $size ?>" value="<?php echo $size ?>" class="form-control" type="number" name="area">
 				</div>
 			</div>
 

@@ -178,10 +178,12 @@ $(function() {
   }
   setTimeout(cart, 3000);
 
+
 });
 
-//--------------------------------------scroll------------------------------
+//--------------------------------------resize------------------------------
   $(window).resize(function(event) {
+    //--------------------------------------jScrollPane------------------------------
     $('.woocommerce__shop_table').jScrollPane();
     $('.woocommerce-mini-cart').jScrollPane();
     $('.header__like .tinv-wishlist').jScrollPane();
@@ -193,8 +195,18 @@ $(function() {
     $('.preloader').delay(3000).fadeOut('slow');
   });
 
-     
-  function debag() {
-    $('body').addClass('debag');
-  }
-  setTimeout(debag, 3000);
+
+
+$(function() {
+
+  //--------------------------------------img slider------------------------------
+    var cw = $('.script .cart__img img').width();
+    $('.script .cart__img img').css({'height':cw+'px'});
+});
+
+//--------------------------------------resize------------------------------
+  $(window).resize(function(event) {
+    //--------------------------------------img slider------------------------------
+    var cw = $('.script .cart__img img').width();
+    $('.script .cart__img img').css({'height':cw+'px'});
+  });
