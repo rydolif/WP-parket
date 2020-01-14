@@ -816,6 +816,7 @@
 		.swiper-button-disabled
 			opacity: .35 !important
 
+
 	h4
 		font-size: 18px
 		margin-bottom: 25px
@@ -1016,11 +1017,12 @@
 	&__block
 		position: absolute
 		top: 25px
-		left: 25px
+		left: 40px
 		right: 25px
 		display: flex
 		align-items: center
 		justify-content: flex-end
+		flex-wrap: wrap
 		z-index: 1
 
 		button
@@ -2089,7 +2091,8 @@ div.wpcf7-mail-sent-ok
 
 	&__slider
 		width: 31%
-
+		position: relative
+		
 	&__img
 		margin-bottom: 5px
 
@@ -2100,19 +2103,24 @@ div.wpcf7-mail-sent-ok
 			width: 100%
 			height: auto
 			
-		.cart__img_plus,
-		.cart__next,
-		.cart__prev
-			opacity: 1 !important
+	.cart__img_plus,
+	.cart__next,
+	.cart__prev
+		opacity: 1 !important
 
-		.cart__next,
-		.cart__prev
-			background-color: #fff
-			height: 75px
-			width: 55px
+	.cart__next,
+	.cart__prev
+		background-color: rgba(#fff, .5)
+		height: 50px
+		width: 50px
+		top: 50%
+		transform: translate(0, -50%)
 
-		.cart__prev
-			right: 55px
+	.cart__prev
+		left: 0
+
+	.cart__next
+		right: 0
 
 	&__previews
 		img

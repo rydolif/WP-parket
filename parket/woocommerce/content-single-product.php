@@ -70,6 +70,12 @@ if ( post_password_required() ) {
 			endforeach;
 		?>
 
+		<p class="product-attr">
+			<?php $regular_price = $product->get_regular_price(); ?>
+			<span class="producrt-attr__label">Цена: </span>
+			<b class="producrt-attr__name"><?php echo  $regular_price ?> /м<sup>2</sup></b>
+		</p>
+
 	</div>
 
 	<div class="tovar__calculation">
@@ -96,7 +102,7 @@ if ( post_password_required() ) {
 					<div class="cart__form_block">
 						<label>Площадь покрытия (м<sup>2</sup>)</label>
 						<div class="cart__form_quantity product-qty">
-							<input min="0" step="0.1" value="<?php echo $size ?>" class="form-control" type="number" name="area">
+							<input min="0" step="<?php echo $size ?>" value="<?php echo $size ?>" class="form-control" type="number" name="area">
 						</div>
 					</div>
 

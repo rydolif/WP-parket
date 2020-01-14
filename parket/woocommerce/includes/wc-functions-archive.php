@@ -104,24 +104,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 	}
 
 	function woocommerce_archive_gallery() {
-	 
+	 	 
 		global $product;
 		$post_ids = $product->get_id();
 		$product_id = $product->get_id();
 		 
 		$attachment_ids = $product->get_gallery_image_ids();
 
-
 		foreach( $attachment_ids as $attachment_id ) {
-		  
-		  echo '<div class="swiper-slide"><a href="';
-		  the_permalink();
+		  echo '<div class="swiper-slide"><a href="';			  
+		  echo $Original_image_url = wp_get_attachment_url( $attachment_id );			  
+		  echo '" data-fancybox="';	
+		  echo $product_id;	
 		  echo '" class="">';
 		  echo '<span class="cart__img_plus"><span></span><span></span></span>';
-		  echo '<img src="' . $medium_url = wp_get_attachment_image_src( $attachment_id, 'medium')[0] . '" alt="">';
-		  echo '</a></div>';  
-		}
-	   
+		  echo wp_get_attachment_image( $attachment_id, 'shop');
+		  echo '</a></div>';
+		}	
+
 	   ?>
 	      
 	<?php
@@ -194,6 +194,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 						// Получаем элементы таксономии атрибута shoes
 						$attribute_names = get_the_terms($product->get_id(), 'pa_klass');
 						$attribute_name = "pa_klass";
+						if ($attribute_names) {
+							// Вывод имени атрибута shoes
+							echo '<span class="producrt-attr__label">' . wc_attribute_label($attribute_name) . ': </span>';
+							echo '<b class="producrt-attr__name">';
+							// Выборка значения заданного атрибута
+							foreach ($attribute_names as $attribute_name):
+								// Вывод значений атрибута shoes
+								echo  $attribute_name->name . ', ' ;
+							endforeach;
+							echo '</b>';
+						}
+					?>
+				</p>
+				
+				<p class="product-attr">
+					<?php
+						// Получаем элементы таксономии атрибута shoes
+						$attribute_names = get_the_terms($product->get_id(), 'pa_tolshhina');
+						$attribute_name = "pa_tolshhina";
 						if ($attribute_names) {
 							// Вывод имени атрибута shoes
 							echo '<span class="producrt-attr__label">' . wc_attribute_label($attribute_name) . ': </span>';

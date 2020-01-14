@@ -11,7 +11,7 @@ jQuery(function($) {
       if (e.target.tagName !== "BUTTON") {
         return;
       }
-      const $input = $(this).find('input[type="number"]');
+      var $input = $(this).find('input[type="number"]');
       if (e.target.innerHTML === "+") {
         $input[0].stepUp();
         $input.trigger("input");
@@ -25,55 +25,74 @@ jQuery(function($) {
 
   customInput();
 
-  function calculateForm(form) {
-    var areaPerItem = form.find("input[name=area_per_item]").val(),
-      current_area = form.find("input[name=area]").val(),
-      current_qty = form.find("input[name=quantity]").val();
-    price =
-      +form.find("input[name=sale_price]").val() ||
-      +form.find("input[name=price]").val();
+  function calculateForm(form, value) {
+    var areaPerItem = form.find("input[name=area_per_item]").val();
+
+    var calcQty = +value / +areaPerItem;
+    var calcArea = +value * +areaPerItem;
 
     return {
-      total_price: + current_qty * price,
-      area: +current_area,
-      qty: +current_qty,
-      area_per_item: areaPerItem
+      area: calcArea,
+      qty: calcQty
     };
   }
 
-  // $(".add-to-cart-form").on("input", function(e) {
-  //   var form = $(this);
-  //   var b = calculateForm(form);
+  $(".add-to-cart-form").on("input", function(e) {
+    var form = $(this);
+    var current_area = form.find("input[name=area]").val(),
+      current_qty = form.find("input[name=quantity]").val();
 
-  //   qtyInput = form.find("input[name=quantity]");
-  //   console.log(b);
-  //   // qtyInput.val(b.qty);
-  //   // b = calculateForm(form);
-  //   // areaInput = form.find("input[name=area]");
-  //   // areaInput.val(b.square);
-  // });
+    var totalPrice = form.find(".total-price__value");
+    var price = +form.find("input[name=price]").val();
+
+    totalPrice.html((current_area * price).toFixed(0));
+  });
 
   $("input[name=quantity]").on("input", function(e) {
     var form = $(e.target).closest("form");
-    var vals = calculateForm(form);
+    var current_qty = form.find("input[name=quantity]").val();
+    var areaInput = form.find("input[name=area]");
 
-    form
-      .find("input[name=area]")
-      .val((vals.area_per_item * vals.qty).toFixed(1));
+    var vals = calculateForm(form, current_qty);
 
-    form.find(".total-price__value").html(vals.total_price);
+    areaInput.val(vals.area.toFixed(1));
   });
 
-  $("input[name=area]").on("input", function(e) {
-    var form = $(e.target).closest("form");
-    var vals = calculateForm(form);
+  function debounce(func, wait, immediate) {
+    var timeout;
+    return function() {
+      var context = this,
+        args = arguments;
+      var later = function() {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
+  }
 
-    form
-      .find("input[name=quantity]")
-      .val(Math.ceil(vals.area / vals.area_per_item));
+  $("input[name=area]").on(
+    "input",
+    debounce(function(e) {
+      var form = $(e.target).closest("form");
+      var current_area = form.find("input[name=area]").val();
+      var qtyInput = form.find("input[name=quantity]");
 
-    form.find(".total-price__value").html(vals.total_price);
-  });
+      var vals = calculateForm(form, current_area);
+
+      qtyInput.val(Math.round(vals.qty));
+
+      if (!$(e.target)[0].validity.valid) {
+        e.target.stepUp();
+
+        $(".add-to-cart-form").trigger("input");
+        $(this).trigger("input");
+      }
+    }, 500)
+  );
 
   $(".single_add_to_cart_button").on("click", function(e) {
     e.preventDefault();
