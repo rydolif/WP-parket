@@ -178,8 +178,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			$size = $val;
 			$area_per_item = $size;
 
-			$regular_price = $product->get_regular_price();
-			$sale_price = $product->get_sale_price();
+			$price = $product->get_price();
 
 			$product_attributes = $product->get_attributes();
 			$visible_attr = [];
@@ -276,18 +275,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<div class="cart__form_block">
 				<label>Площадь покрытия (м<sup>2</sup>)</label>
 				<div class="cart__form_quantity product-qty">
-					<input min="0" step="<?php echo $size ?>" value="<?php echo $size ?>" class="form-control" type="number" name="area">
+					<input min="<?php echo $size ?>" step="<?php echo $size ?>" value="<?php echo $size ?>" class="form-control" type="number" name="area">
 				</div>
 			</div>
 
 			<div class="cart__price total-price">
 				<span class="total-price__label">Стоимость заказа</span>
-				<span class="cart__price_green"><b class="total-price__value"><?php echo  $sale_price ? $sale_price : $regular_price ?></b> руб.</span>
+				<span class="cart__price_green"><b class="total-price__value"><?php echo  $price * $size ?></b> руб.</span>
 			</div>
 			<div class="cart__form_add add-to-cart">
 				<input type="hidden" value="<?php echo $product_id ?>" name="product_id">
-				<input type="hidden" value="<?php echo $regular_price ?>" name="price">
-				<input type="hidden" value="<?php echo $sale_price ?>" name="sale_price">
+				<input type="hidden" value="<?php echo $price ?>" name="price">
 				<input type="hidden" value="<?php echo $area_per_item ?>" name="area_per_item">
 					<button type="button" class="btn btn--cart single_add_to_cart_button button alt">
 						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 486.569 486.569" style="enable-background:new 0 0 486.569 486.569;" xml:space="preserve">

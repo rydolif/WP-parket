@@ -278,7 +278,7 @@ if (!function_exists('schoolstudy_woocommerce_wrapper_before')) {
 				?>
 			</li>
 		</ul>
-	<?php
+<?php
 		}
 	}
 
@@ -321,8 +321,44 @@ if (!function_exists('schoolstudy_woocommerce_wrapper_before')) {
 			echo wp_send_json($data);
 		}
 
+
+
 		wp_die();
 	}
 
+	add_action('woocommerce_before_calculate_totals', 'action_cart_calculate_totals', 1000, 1);
+	function action_cart_calculate_totals($cart_object)
+	{
+
+		if (is_admin() && !defined('DOING_AJAX'))
+			return;
+
+		if (did_action('woocommerce_before_calculate_totals') >= 2)
+			return;
+
+		if (!WC()->cart->is_empty()) :
+
+			foreach ($cart_object->get_cart() as $hash => $value) {
+				$price = $value['data']->get_price();
 
 
+				$k = $value['data']->get_attribute('upakovka') ? floatval($value['data']->get_attribute('upakovka')) : 1;
+				$newprice = $price * $k;
+
+				$value['data']->set_price($newprice);
+			}
+
+
+		endif;
+	}
+
+
+	add_filter('woocommerce_add_to_cart_fragments', 'filter_add_to_cart_fragments', 10, 1);
+
+	function filter_add_to_cart_fragments($fragments)
+	{
+
+		// $fragments['div.header-cart-count'] = '<div class="header-cart-count">' . WC()->cart->get_cart_contents_count() . '</div>';
+		// var_dump($fragments);
+		return $fragments;
+	}
