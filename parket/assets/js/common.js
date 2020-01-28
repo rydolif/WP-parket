@@ -108,7 +108,7 @@ $(function() {
     $(this).toggleClass('header__search--active');
   });
 
-//---------------------------js-----------------------
+//---------------------------js-tabs----------------------
   $('.tabs__wrap').hide();
   $('.tabs__wrap:first').show();
   $('.tabs ul a:first').addClass('tabs__link--active');
@@ -198,7 +198,6 @@ $(function() {
 
 
 $(function() {
-
   //--------------------------------------img slider------------------------------
     var cw = $('.script .cart__img img').width();
     $('.script .cart__img img').css({'height':cw+'px'});
@@ -209,4 +208,18 @@ $(function() {
     //--------------------------------------img slider------------------------------
     var cw = $('.script .cart__img img').width();
     $('.script .cart__img img').css({'height':cw+'px'});
+  });
+
+
+
+  $('.chw-widget a').click(function() {
+    $('.chw-widget a').removeClass('active');
+    $(this).toggleClass('active');
+
+    function cw() {
+      //--------------------------------------img slider------------------------------
+      var cw = $('.script .cart__img img').width();
+      $('.script .cart__img img').css({'height':cw+'px'});
+    }
+    setTimeout(cw, 3000);
   });

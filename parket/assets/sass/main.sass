@@ -542,6 +542,7 @@
 	&__filter
 		width: 23%
 
+
 	&__wrap
 		width: 75%
 
@@ -1830,6 +1831,33 @@ div.wpcf7-mail-sent-ok
 	li
 		margin-bottom: 8px
 
+	span
+		position: relative
+		display: block
+		margin-left: 20px
+		padding-left: 35px
+		line-height: 1
+
+		&::before,
+		&::after
+			content: '' !important
+			position: absolute
+			left: 0
+			transition: all .6s
+
+		&::before
+			width: 15px
+			height: 15px
+			border: 1px solid #ccc
+
+		&::after
+			width: 9px
+			height: 9px
+			border: 1px solid #ccc
+			background: #ccc
+			left: 3px
+			top: 3px
+
 	a
 		position: relative
 		display: block
@@ -1862,10 +1890,10 @@ div.wpcf7-mail-sent-ok
 			&::after
 				opacity: .4
 
-		&:focus,
-		&:active
-			&::after
-				opacity: 1
+	.active
+		&::after
+			opacity: 1 !important
+	
 
 
 	&--active
@@ -2344,6 +2372,36 @@ table
 		width: 100px
 		height: auto
 		
+.woocommerce-pagination
+	padding-bottom: 40px
+
+	ul
+		display: flex
+		justify-content: center
+		align-items: center
+		flex-wrap: wrap
+
+	a
+		width: 30px
+		height: 30px
+		display: flex
+		justify-content: center
+		align-items: center
+		border: 1px solid $accent
+		color: $accent
+
+	span
+		width: 30px
+		height: 30px
+		display: flex
+		justify-content: center
+		align-items: center
+		border: 1px solid $accent
+		background-color: $accent
+		color: #fff
+
+
+
 
 
 
